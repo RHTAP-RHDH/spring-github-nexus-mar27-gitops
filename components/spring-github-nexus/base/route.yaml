@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: spring-github-nexus
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: spring-github-nexus 
+  name: spring-github-nexus
+spec:
+  port:
+    targetPort: 8081 
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: spring-github-nexus
+    weight: 100 
